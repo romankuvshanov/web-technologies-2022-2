@@ -19,9 +19,9 @@ function getCurrentTimeAsString() {
         $hourText = ' Часа ';
     }
 
-    if ($hour % 10 == 10) {
+    if ($minute % 10 == 1) {
         $minuteText = ' Минута';
-    } elseif ($hour % 10 == 2 || $hour % 10 == 3 || $hour % 10 == 4) {
+    } elseif ($minute % 10 == 2 || $minute % 10 == 3 || $minute % 10 == 4) {
         $minuteText = ' Минуты';
     } else {
         $minuteText = ' Минут';
