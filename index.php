@@ -67,9 +67,26 @@ $transliterationArray = [
 
 function transliterate($input) {
     global $transliterationArray;
-    return str_replace(array_keys($transliterationArray), array_values($transliterationArray), strtolower($input));
+    return str_replace(array_keys($transliterationArray), array_values($transliterationArray), mb_strtolower($input));
 }
 
 echo transliterate('привет');
+echo '<br>';
+
+// Задание 6
+$districtsAndCities = [
+    'Московская область' => ['Москва', 'Зеленоград', 'Клин'],
+    'Ленинградская область' => ['Санкт-Петербург', 'Всеволожск', 'Павловск', 'Кронштадт'],
+    'Рязанская область' => ['Рязань', 'Скопин', 'Ряжск']
+];
+
+function isWordStartingWithK($word) {
+    return mb_strtolower(mb_substr($word, 0, 1)) == 'к';
+}
+
+foreach ($districtsAndCities as $districtName => $cities) {
+    echo  $districtName . ':<br>';
+    echo implode(', ', array_filter($cities, 'isWordStartingWithK')) . '.<br>';
+}
 echo '<br>';
 ?>
