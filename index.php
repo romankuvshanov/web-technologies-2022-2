@@ -23,7 +23,7 @@ $districtsAndCities = [
 ];
 
 foreach ($districtsAndCities as $districtName => $cities) {
-    echo  $districtName . ':<br>';
+    echo $districtName . ':<br>';
     echo implode(', ', $cities) . '.<br>';
 }
 echo '<br>';
@@ -63,9 +63,10 @@ $transliterationArray = [
     'э' => 'e',
     'ю' => 'yu',
     'я' => 'ya'
-    ];
+];
 
-function transliterate($input) {
+function transliterate($input)
+{
     global $transliterationArray;
     return str_replace(array_keys($transliterationArray), array_values($transliterationArray), mb_strtolower($input));
 }
@@ -80,12 +81,13 @@ $districtsAndCities = [
     'Рязанская область' => ['Рязань', 'Скопин', 'Ряжск']
 ];
 
-function isWordStartingWithK($word) {
+function isWordStartingWithK($word)
+{
     return mb_strtolower(mb_substr($word, 0, 1)) == 'к';
 }
 
 foreach ($districtsAndCities as $districtName => $cities) {
-    echo  $districtName . ':<br>';
+    echo $districtName . ':<br>';
     echo implode(', ', array_filter($cities, 'isWordStartingWithK')) . '.<br>';
 }
 echo '<br>';

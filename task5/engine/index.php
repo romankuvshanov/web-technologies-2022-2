@@ -8,11 +8,21 @@ if (isset($_GET['page'])) {
     $page = $_GET['page'];
 }
 
-$params = [];
+$params = ['menuItems' => [
+    ['title' => 'Главная', 'url' => '/task5/engine/'],
+    ['title' => 'Каталог', 'url' => '/task5/engine/?page=catalog'],
+    ['title' => 'О нас', 'url' => '/task5/engine/?page=about'],
+    'Подпункты' => [
+        ['title' => 'Подпункт 1', 'url' => '/task5/engine/?page=1'],
+        ['title' => 'Подпункт 2', 'url' => '/task5/engine/?page=2'],
+        ['title' => 'Подпункт 3', 'url' => '/task5/engine/?page=3'],
+    ],
+]];
 
 switch ($page) {
     case 'index':
         $params['title'] = 'Главная';
+        $params['test'] = 'Test';
         break;
     case 'catalog':
         $params['title'] = 'Каталог';
@@ -22,17 +32,16 @@ switch ($page) {
         $params['title'] = 'О нас';
         $params['phone'] = '+7 495 123 23 23';
         break;
-
     case 'apicatalog':
         echo json_encode(getCatalog(), JSON_UNESCAPED_UNICODE);
         die();
-
     default:
         echo "404";
         die();
 }
 
-function getCatalog() {
+function getCatalog()
+{
     return [
         [
             'name' => 'Яблоко',
@@ -52,7 +61,8 @@ function getCatalog() {
     ];
 }
 
-function renderTemplate($page, $params = []) {
+function renderTemplate($page, $params = [])
+{
 
 //    foreach ($params as $key => $value) {
 //            $$key = $value;
@@ -68,6 +78,6 @@ function renderTemplate($page, $params = []) {
 
 echo renderTemplate(LAYOUTS_DIR . 'main', [
     'title' => $params['title'],
-    'menu' => renderTemplate('menu'),
-    'content' => renderTemplate($page, $params)
+    'menu' => renderTemplate('menu', $params),
+    'content' => renderTemplate($page, $params),
 ]);

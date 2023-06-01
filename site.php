@@ -9,28 +9,29 @@
 </head>
 <body>
 
-    <?php
-    // Задание 4
-    $menu = [
-        'О нас', 'Чем заняться', 'Где остановиться', 'Подпункты' => ['Подпункт 1', 'Подпункт 2', 'Подпункт 3']
-    ];
+<?php
+// Задание 4
+$menu = [
+    'О нас', 'Чем заняться', 'Где остановиться', 'Подпункты' => ['Подпункт 1', 'Подпункт 2', 'Подпункт 3']
+];
 
-    function printArray($arr) {
-        echo '<ul>';
-        foreach ($arr as $key => $menuItem) {
-            if (is_array($menuItem)) {
-                echo '<li>' . $key;
-                printArray($menuItem);
-                echo '</li>';
-            } else {
-                echo '<li>' . $menuItem . '</li>';
-            }
+function printArray($arr)
+{
+    echo '<ul>';
+    foreach ($arr as $key => $menuItem) {
+        if (is_array($menuItem)) {
+            echo '<li>' . $key;
+            printArray($menuItem);
+            echo '</li>';
+        } else {
+            echo '<li>' . $menuItem . '</li>';
         }
-        echo '</ul>';
     }
+    echo '</ul>';
+}
 
-    printArray($menu);
-    ?>
+printArray($menu);
+?>
 
 </body>
 </html>

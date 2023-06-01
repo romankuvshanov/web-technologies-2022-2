@@ -1,5 +1,20 @@
-<a href="/task5/engine/">Главная</a>
-<a href="/task5/engine/?page=catalog">Каталог</a>
-<a href="/task5/engine/?page=about">О нас</a><br>
+<?php
+// Задание 5
+function printArray($arr)
+{
+    echo '<ul>';
+    foreach ($arr as $key => $subArray) {
+        if (is_string($key)) {
+            echo '<li>' . $key;
+            printArray($subArray);
+            echo '</li>';
+        } else {
+            echo '<li><a href="' . $subArray['url'] . '">' . $subArray['title'] . '</a></li>';
+        }
 
+    }
+    echo '</ul>';
+}
 
+printArray($menuItems);
+?>
