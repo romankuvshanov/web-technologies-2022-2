@@ -50,7 +50,6 @@ function getProduct($productId)
 
 function getReviews($productId)
 {
-//    TODO: Экспорт БД
     return getAssocResult('SELECT * FROM reviews WHERE productId=' . $productId . ' ORDER BY id DESC');
 }
 
